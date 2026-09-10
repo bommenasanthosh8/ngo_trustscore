@@ -1,0 +1,174 @@
+import enum
+
+
+class UserRole(str, enum.Enum):
+    NGO = "NGO"
+    DONOR = "DONOR"
+    AUDITOR = "AUDITOR"
+    ADMIN = "ADMIN"
+
+
+class NGOVerificationStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    VERIFIED = "VERIFIED"
+    REJECTED = "REJECTED"
+
+
+
+class ProjectType(str, enum.Enum):
+    WATER_AND_SANITATION = "WATER_AND_SANITATION"
+    EDUCATION = "EDUCATION"
+    HEALTHCARE = "HEALTHCARE"
+    INFRASTRUCTURE = "INFRASTRUCTURE"
+    FOOD_DISTRIBUTION = "FOOD_DISTRIBUTION"
+    ENVIRONMENT = "ENVIRONMENT"
+    RELIEF_DISTRIBUTION = "RELIEF_DISTRIBUTION"
+    SANITATION = "SANITATION"
+    OTHER = "OTHER"
+
+
+class ProjectStatus(str, enum.Enum):
+    CREATED = "CREATED"
+    FUNDING = "FUNDING"
+    EVIDENCE_COLLECTION = "EVIDENCE_COLLECTION"
+    UNDER_VERIFICATION = "UNDER_VERIFICATION"
+    VERIFIED = "VERIFIED"
+    PARTIALLY_VERIFIED = "PARTIALLY_VERIFIED"
+    PENDING = "PENDING"
+    DISPUTED = "DISPUTED"
+
+
+class VerificationModel(str, enum.Enum):
+    PERMANENT = "PERMANENT"
+    ONE_TIME_EVENT = "ONE_TIME_EVENT"
+    FINANCIAL_ASSISTANCE = "FINANCIAL_ASSISTANCE"
+
+
+class EvidenceType(str, enum.Enum):
+    BEFORE = "BEFORE"
+    PROGRESS = "PROGRESS"
+    COMPLETION = "COMPLETION"
+    EVENT = "EVENT"
+    FINANCIAL = "FINANCIAL"
+    OTHER = "OTHER"
+    # Legacy / format types
+    IMAGE = "IMAGE"
+    VIDEO = "VIDEO"
+    DOCUMENT = "DOCUMENT"
+    INSPECTION_REPORT = "INSPECTION_REPORT"
+
+
+class LocationStatus(str, enum.Enum):
+    CAPTURED = "CAPTURED"
+    LOCATION_UNAVAILABLE = "LOCATION_UNAVAILABLE"
+
+
+class VerificationStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    VERIFIED = "VERIFIED"
+    FLAGGED = "FLAGGED"
+    REJECTED = "REJECTED"
+
+
+class RiskLevel(str, enum.Enum):
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
+
+
+class AuditStatus(str, enum.Enum):
+    INITIATED = "INITIATED"
+    IN_PROGRESS = "IN_PROGRESS"
+    CONCLUDED = "CONCLUDED"
+    DISPUTED = "DISPUTED"
+
+
+class AuditDecisionType(str, enum.Enum):
+    CONFIRMED = "CONFIRMED"
+    PARTIALLY_CONFIRMED = "PARTIALLY_CONFIRMED"
+    REJECTED = "REJECTED"
+    DISCREPANCY = "DISCREPANCY"
+    # Backwards compatibility
+    APPROVED = "APPROVED"
+    APPROVED_WITH_CONDITIONS = "APPROVED_WITH_CONDITIONS"
+    FLAGGED_FRAUD = "FLAGGED_FRAUD"
+
+
+class AuditSelectionReason(str, enum.Enum):
+    HIGH_RISK = "HIGH_RISK"
+    HIGH_VALUE = "HIGH_VALUE"
+    RANDOM_SAMPLE = "RANDOM_SAMPLE"
+    MANUAL_ASSIGNMENT = "MANUAL_ASSIGNMENT"
+
+
+class DisputeStatus(str, enum.Enum):
+    OPEN = "OPEN"
+    UNDER_REVIEW = "UNDER_REVIEW"
+    RESOLVED = "RESOLVED"
+    DISMISSED = "DISMISSED"
+
+
+class FinancialDocumentType(str, enum.Enum):
+    INVOICE = "INVOICE"
+    BILL = "BILL"
+    RECEIPT = "RECEIPT"
+    EXPENSE_STATEMENT = "EXPENSE_STATEMENT"
+    TRANSACTION_RECORD = "TRANSACTION_RECORD"
+    OTHER = "OTHER"
+
+
+class OCRStatus(str, enum.Enum):
+    PENDING = "PENDING"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
+    UNSUPPORTED_FORMAT = "UNSUPPORTED_FORMAT"
+    SKIPPED = "SKIPPED"
+
+
+class FinancialValidationStatus(str, enum.Enum):
+    VALID = "VALID"
+    AMOUNT_MISMATCH = "AMOUNT_MISMATCH"
+    DUPLICATE_DOCUMENT = "DUPLICATE_DOCUMENT"
+    SUSPICIOUS_REPEATED = "SUSPICIOUS_REPEATED"
+    PENDING = "PENDING"
+
+
+class FinancialConsistencyStatus(str, enum.Enum):
+    CONSISTENT = "CONSISTENT"
+    MINOR_DISCREPANCY = "MINOR_DISCREPANCY"
+    MAJOR_DISCREPANCY = "MAJOR_DISCREPANCY"
+    INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
+
+
+class RecommendedAction(str, enum.Enum):
+    NO_ADDITIONAL_ACTION = "NO_ADDITIONAL_ACTION"
+    MANUAL_REVIEW = "MANUAL_REVIEW"
+    AUDIT_RECOMMENDED = "AUDIT_RECOMMENDED"
+
+
+class ScoreStatus(str, enum.Enum):
+    STRONG_EVIDENCE = "STRONG_EVIDENCE"
+    GOOD_EVIDENCE = "GOOD_EVIDENCE"
+    LIMITED_EVIDENCE = "LIMITED_EVIDENCE"
+    WEAK_EVIDENCE = "WEAK_EVIDENCE"
+
+
+class HistoricalTrend(str, enum.Enum):
+    IMPROVING = "IMPROVING"
+    STABLE = "STABLE"
+    DECLINING = "DECLINING"
+    INSUFFICIENT_DATA = "INSUFFICIENT_DATA"
+
+
+class PaymentMethod(str, enum.Enum):
+    UPI = "UPI"
+    CARD = "CARD"
+    NET_BANKING = "NET_BANKING"
+    RAZORPAY_GATEWAY = "RAZORPAY_GATEWAY"
+
+
+class DonationStatus(str, enum.Enum):
+    SUCCESS = "SUCCESS"
+    PENDING = "PENDING"
+    FAILED = "FAILED"

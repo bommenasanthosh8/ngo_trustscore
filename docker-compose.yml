@@ -1,0 +1,62 @@
+version: "3.9"
+
+services:
+  # -------------------------------------------------------
+  # PostgreSQL + PostGIS
+  # -------------------------------------------------------
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: ngo_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ngo_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ngo_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-ngo_platform}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ngo_user} -d ${POSTGRES_DB:-ngo_platform}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -------------------------------------------------------
+  # FastAPI Backend
+  # -------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ngo_backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-ngo_user}:${POSTGRES_PASSWORD:-ngo_secret}@db:5432/${POSTGRES_DB:-ngo_platform}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  # -------------------------------------------------------
+  # React Frontend (Vite dev server)
+  # -------------------------------------------------------
+  frontend:
+    image: node:20-alpine
+    container_name: ngo_frontend
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5173:5173"
+    command: sh -c "npm install && npm run dev -- --host"
+
+volumes:
+  pg_data:

@@ -1,0 +1,52 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+.env
+*.env
+
+# ===== Alembic =====
+# keep versions dir but ignore SQLite test DBs
+*.db
+*.sqlite3
+
+# ===== Node / Frontend =====
+node_modules/
+.pnp
+.pnp.js
+dist/
+.next/
+out/
+.nuxt/
+.output/
+.cache/
+
+# ===== IDE =====
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ===== Docker =====
+docker-compose.override.yml
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Test =====
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
